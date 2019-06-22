@@ -47,3 +47,6 @@ Thumbs.db
 
 #photos
 /src/assets/photos
+
+#photo names
+/src/assets/photoNames.json

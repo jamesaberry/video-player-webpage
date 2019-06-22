@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { interval } from 'rxjs';
-import { map } from 'rxjs/operators'
+import photoNames from '../assets/photoNames.json';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +19,8 @@ export class AppComponent {
   }
 
   getImage() {
-    this.randNum = this.getRandomInt(5) + 1;
-    this.picture = 'https://www.gstatic.com/webp/gallery3/' + this.randNum.toString() + '_webp_ll.png';
+    this.randNum = this.getRandomInt(photoNames.image_names.length);
+    this.picture = '/assets/photos/' + photoNames.image_names[this.randNum] ;
     this.currentStyles = {
       'height':'55em',
       'background-size':'cover',
