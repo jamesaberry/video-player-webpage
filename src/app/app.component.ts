@@ -10,9 +10,11 @@ import photoNames from '../assets/photoNames.json';
 export class AppComponent {
   title = 'angular-photo-album';
   picture = 'https://www.gstatic.com/webp/gallery3/2_webp_ll.png';
+  photoName = '';
   counter = interval(3000);
   randNum = 0;
-  currentStyles = {}
+  imageStyle = {}
+  textStyle = {}
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -20,8 +22,9 @@ export class AppComponent {
 
   getImage() {
     this.randNum = this.getRandomInt(photoNames.image_names.length);
-    this.picture = '/assets/photos/' + photoNames.image_names[this.randNum] ;
-    this.currentStyles = {
+    this.photoName = photoNames.image_names[this.randNum];
+    this.picture = '/assets/photos/' + this.photoName;
+    this.imageStyle = {
       'background-size':'contain',
       'height':'auto',
       'width':'auto',
@@ -29,8 +32,16 @@ export class AppComponent {
       'background-position': 'center',
       'background-repeat': 'no-repeat',
       'background-color': '#000000',
+      'color' : 'white',
+      'text-align': 'center',
       'background-image': 'url(' + this.picture + ')' 
     };
+    this.textStyle = {
+      'position': 'absolute',
+      'bottom': '8px',
+      'left': '50%',
+      'transform': 'translate(-50%, -50%)'
+    }
   }
   
   ngOnInit() {
