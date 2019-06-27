@@ -22,10 +22,12 @@ export class AppComponent {
     this.randNum = this.getRandomInt(photoNames.image_names.length);
     this.picture = '/assets/photos/' + photoNames.image_names[this.randNum] ;
     this.currentStyles = {
-      'height':'55em',
-      'background-size':'cover',
+      'background-size':'contain',
+      'height':'auto',
       'width':'auto',
-      'background-position':'50% 50%',
+      'min-height':'100vh',
+      'background-position': 'center',
+      'background-repeat': 'no-repeat',
       'background-image': 'url(' + this.picture + ')' 
     };
   }
