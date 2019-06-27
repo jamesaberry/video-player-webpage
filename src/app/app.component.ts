@@ -28,6 +28,7 @@ export class AppComponent {
       'min-height':'100vh',
       'background-position': 'center',
       'background-repeat': 'no-repeat',
+      'background-color': '#000000',
       'background-image': 'url(' + this.picture + ')' 
     };
   }
