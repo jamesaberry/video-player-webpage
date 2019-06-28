@@ -1,0 +1,24 @@
+{
+    "css":{
+        "imageStyle" : {
+            "background-size":"contain",
+            "height":"auto",
+            "width":"auto",
+            "min-height":"100vh",
+            "background-position": "center",
+            "background-repeat": "no-repeat",
+            "background-color": "#000000",
+            "color" : "white",
+            "text-align": "center"
+        },
+        "textStyle" : {
+            "position": "absolute",
+            "font-size": "xx-large",
+            "bottom": "8px",
+            "left": "50%",
+            "transform": "translate(-50%, -50%)"
+        }  
+    },
+    "photoDelayMs" : 10000,
+    "photoAlbumTitle" : "AngularPhotoAlbum"
+ }

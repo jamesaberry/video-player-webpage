@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { interval } from 'rxjs';
 import photoNames from '../assets/photoNames.json';
+import photoConfig from '../assets/photoConfig.json';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,14 @@ import photoNames from '../assets/photoNames.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-photo-album';
-  picture = 'https://www.gstatic.com/webp/gallery3/2_webp_ll.png';
+  title = photoConfig.photoAlbumTitle;
+  textStyle = photoConfig.css.textStyle;
+  imageStyle = photoConfig.css.imageStyle;
+  picture = '';
   photoName = '';
   photoDate = '';
-  counter = interval(3000);
+  counter = interval(photoConfig.photoDelayMs);
   randNum = 0;
-  imageStyle = {}
-  textStyle = {}
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -64,25 +65,7 @@ export class AppComponent {
     this.photoName = photoNames.image_names[this.randNum];
     this.picture = '/assets/photos/' + this.photoName;
     this.photoDate = this.getPhotoDate(this.photoName);
-    this.imageStyle = {
-      'background-size':'contain',
-      'height':'auto',
-      'width':'auto',
-      'min-height':'100vh',
-      'background-position': 'center',
-      'background-repeat': 'no-repeat',
-      'background-color': '#000000',
-      'color' : 'white',
-      'text-align': 'center',
-      'background-image': 'url(' + this.picture + ')' 
-    };
-    this.textStyle = {
-      'position': 'absolute',
-      'font-size': 'xx-large',
-      'bottom': '8px',
-      'left': '50%',
-      'transform': 'translate(-50%, -50%)'
-    }
+    this.imageStyle['background-image'] = 'url(' + this.picture + ')' ;
   }
   
   ngOnInit() {
