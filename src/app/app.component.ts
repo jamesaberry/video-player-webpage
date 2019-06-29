@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { interval } from 'rxjs';
-import photoNames from '../assets/photoNames.json';
-import photoConfig from '../assets/photoConfig.json';
+import { AppConfigService } from './services/appConfig';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +8,18 @@ import photoConfig from '../assets/photoConfig.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = photoConfig.photoAlbumTitle;
-  textStyle = photoConfig.css.textStyle;
-  imageStyle = photoConfig.css.imageStyle;
+  title = this.appConfigService.appConfig.photoAlbumTitle;
+  textStyle = this.appConfigService.appConfig.css.textStyle;
+  imageStyle = this.appConfigService.appConfig.css.imageStyle;
+  counter = interval(this.appConfigService.appConfig.photoDelayMs);
+  photoNames = this.appConfigService.appConfig.imageNames;
   picture = '';
   photoName = '';
   photoDate = '';
-  counter = interval(photoConfig.photoDelayMs);
+  error: any;
   randNum = 0;
+
+  constructor(private appConfigService: AppConfigService) {}
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -61,8 +64,8 @@ export class AppComponent {
   }
 
   getImage() {
-    this.randNum = this.getRandomInt(photoNames.image_names.length);
-    this.photoName = photoNames.image_names[this.randNum];
+    this.randNum = this.getRandomInt(this.photoNames.length);
+    this.photoName = this.photoNames[this.randNum];
     this.picture = '/assets/photos/' + this.photoName;
     this.photoDate = this.getPhotoDate(this.photoName);
     this.imageStyle['background-image'] = 'url(' + this.picture + ')' ;

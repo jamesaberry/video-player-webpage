@@ -20,5 +20,6 @@
         }  
     },
     "photoDelayMs" : 10000,
-    "photoAlbumTitle" : "AngularPhotoAlbum"
- }
+    "photoAlbumTitle" : "AngularPhotoAlbum",
+	"imageNames": []
+}
