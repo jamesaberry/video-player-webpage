@@ -7,19 +7,21 @@ import { AppConfigService } from './services/appConfig';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = this.appConfigService.appConfig.photoAlbumTitle;
   textStyle = this.appConfigService.appConfig.css.textStyle;
   imageStyle = this.appConfigService.appConfig.css.imageStyle;
   counter = interval(this.appConfigService.appConfig.photoDelayMs);
   photoNames = this.appConfigService.appConfig.imageNames;
-  picture = '';
-  photoName = '';
-  photoDate = '';
-  error: any;
-  randNum = 0;
+  randNum = this.getRandomInt(this.photoNames.length);
+  photoName = this.photoNames[this.randNum];
+  picture = '/assets/photos/' + this.photoName;
+  photoDate = this.getPhotoDate(this.photoName);
 
-  constructor(private appConfigService: AppConfigService) {}
+  constructor(private appConfigService: AppConfigService) {
+    this.imageStyle['background-image'] = 'url(' + this.picture + ')';
+  }
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
