@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfigService } from './services/appConfig';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatVideoModule } from 'mat-video';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +16,9 @@ import { AppConfigService } from './services/appConfig';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatVideoModule
   ],
   providers: [
     {

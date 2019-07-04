@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { interval } from 'rxjs';
 import { AppConfigService } from './services/appConfig';
+import { MatVideoModule } from 'mat-video';
 
 @Component({
   selector: 'app-root',
@@ -59,6 +60,11 @@ export class AppComponent {
   }
 
   getPhotoDate(photoName) {
+
+    if(photoName == null) {
+      return '';
+    }
+    
     var year = photoName.substring(4, 8);
     var month = photoName.substring(8, 10);
     var day = photoName.substring(10, 12);
